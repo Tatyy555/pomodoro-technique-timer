@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
 function App() {
-  const [breakTime, setBreakTime] = useState(5);
-  const [sessionTime, setSessionTime] = useState(25);
-  const [remainingTime, setRemainingTime] = useState(25 * 60);
+  const [breakTime, setBreakTime] = useState(3);
+  const [sessionTime, setSessionTime] = useState(27);
+  const [remainingTime, setRemainingTime] = useState(27 * 60);
   const [isSession, setIsSession] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isAlarmOn, setIsAlarmOn] = useState(true);
@@ -18,6 +18,7 @@ function App() {
 
     const timer = setTimeout(() => {
       const myAlarm = document.getElementById("beep");
+      myAlarm.volume =  0.1;
       if (remainingTime && isPlaying) {
         setRemainingTime(remainingTime - 1);
         console.log(remainingTime);
@@ -39,13 +40,14 @@ function App() {
 
   const reset = () => {
     const myAlarm = document.getElementById("beep");
+    myAlarm.volume =  0.1;
     isAlarmOn ? myAlarm.pause():console.log("alarm is off");
     isAlarmOn ? myAlarm.currentTime = 0:console.log("alarm is off");
     setIsPlaying(false);
     setIsSession(true);
-    setBreakTime(5);
-    setSessionTime(25);
-    setRemainingTime(25 * 60);
+    setBreakTime(3);
+    setSessionTime(27);
+    setRemainingTime(27 * 60);
   };
 
   const addBreakTime = () => {
